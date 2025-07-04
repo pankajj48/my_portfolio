@@ -46,22 +46,6 @@ Portfolio_pankaj/
 
 ---
 
-## 🚀 How to Run Locally
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/pankajj48/Portfolio_pankaj.git
-   ```
-
-2. Navigate into the project directory:
-   ```bash
-   cd Portfolio_pankaj
-   ```
-
-3. Open `index.html` in your browser or use Live Server (if using VS Code).
-
----
-
 ## 📬 Contact
 
 📧 Email: pankajnamdev2004@gmail.com  
