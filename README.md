@@ -7,8 +7,6 @@ Welcome to my personal portfolio website! This project showcases my skills, proj
 
 ## 🌐 Live Preview
 
-![image](https://github.com/user-attachments/assets/82697559-c455-4271-a9ac-0cd27272f331)
-
 
 🔗 [View Live Site](https://pankajj48.github.io/Portfolio_pankaj/#)
 
