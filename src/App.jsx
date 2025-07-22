@@ -820,7 +820,7 @@ export default function App() {
           </div>
           <div style={currentStyles.heroButtonContainer}>
             <a href="#projects" onClick={(e) => handleNavClick(e, '#projects')} style={currentStyles.heroButton(false)}>View My Work</a>
-            <a href="src/assets/PankajNamdev_FrontendDeveloper_Resume.pdf (1).pdf" download="PankajNamdev_FrontendDeveloper_Resume.pdf" style={currentStyles.secondaryButton(false)}>Download Resume</a>
+            <a href="assets/PankajNamdev_FrontendDeveloper_Resume.pdf (1).pdf" download="PankajNamdev_FrontendDeveloper_Resume.pdf" style={currentStyles.secondaryButton(false)}>Download Resume</a>
           </div>
           <div style={currentStyles.heroSocials}>
             <a href="https://github.com/pankajj48" target="_blank" rel="noopener noreferrer" style={currentStyles.socialLink}>
@@ -837,7 +837,7 @@ export default function App() {
             <h2 style={currentStyles.sectionTitle}><span style={currentStyles.sectionTitleAfter}></span>About Me</h2>
             <div style={currentStyles.aboutContainer}>
                 <div style={currentStyles.aboutImageContainer}>
-                    <img src="src/assets/1000038025.jpg" alt="Developer portrait" style={currentStyles.aboutImage} />
+                    <img src="assets/1000038025.jpg" alt="Developer portrait" style={currentStyles.aboutImage} />
                 </div>
                 <div style={currentStyles.aboutRight}>
                     <p style={currentStyles.aboutText}>I'm a passionate frontend developer with a knack for creating beautiful, functional, and user-centered digital experiences. I love turning complex problems into simple, elegant solutions that delight users and drive business goals.</p>
