@@ -1,13 +1,11 @@
 
-#            Personal Portfolio - Pankaj
+#                             Personal Portfolio - Pankaj
 
 Welcome to my personal portfolio website! This project showcases my skills, projects, and experiences as a web developer. It’s designed to highlight who I am, what I do, and how to get in touch with me.
 
 ---
 
 ## 🌐 Live Preview
-
-![image](https://github.com/user-attachments/assets/82697559-c455-4271-a9ac-0cd27272f331)
 
 
 🔗 [View Live Site](https://pankajj48.github.io/Portfolio_pankaj/#)
