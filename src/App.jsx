@@ -7,6 +7,11 @@ import Tsparticles, { initParticlesEngine } from "https://esm.sh/@tsparticles/re
 import { loadSlim } from "https://esm.sh/tsparticles-slim@2";
 import Tilt from 'https://esm.sh/react-parallax-tilt@1';
 import emailjs from 'https://esm.sh/@emailjs/browser@4';
+// --- NEW: Import icons ---
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaPython } from 'react-icons/fa';
+import { SiJavascript, SiNextdotjs, SiExpress, SiFigma } from 'react-icons/si';
+import { CgCPlusPlus } from "react-icons/cg";
+
 
 // --- THEME COLORS (Used to set CSS variables) ---
 const themes = {
@@ -29,7 +34,6 @@ const themes = {
     '--tooltip-text': '#FFFFFF',
     '--title-head': 'white',
   },
-
   light: {
     '--background': '#FFF9F5', // Very light peach background
     '--text': '#5C3A21', // Dark brown for text
@@ -46,8 +50,8 @@ const themes = {
     '--nav-link-hover-bg': '#FFF0E8',
     '--text-muted': '#856A54', // Muted brown
     '--tooltip-bg': '#5C3A21',
-    '--tooltip-text': 'black',
-    '--title-head': 'black',
+    '--tooltip-text': '#FFFFFF', // Changed from 'black' for better contrast
+    '--title-head': '#5C3A21', // Changed from 'black'
   }
 };
 
@@ -93,7 +97,6 @@ const useFadeIn = (options = {}) => {
 };
 
 // --- DATA ---
-// NOTE: The `icons` object has been removed as it is no longer needed.
 const experience = [
   { date: 'May 2025 - June 2025', title: 'Front-End Developer Intern', company: ' Alphawizz Technology Pvt. Ltd.', description: 'Developed and deployed two React-based projects, improving page load performance by 30% and reducing UI bug reports by 40% Enhanced code reusability by 50% through adoption of component-based architecture, leading to faster development cycles across modules.' },
   { date: 'May 2024 – June 2024', title: 'Website Design and Development Intern', company: ' Internship Studio', description: ' Built a fully responsive e-commerce website, increasing mobile conversion rate by 35% Streamlined manufacturing processes, reducing production costs by 10%. Optimized frontend workflows, reducing load time by 30% and improving user engagement.' },
@@ -110,12 +113,29 @@ const projects = [
   { title: 'Expenses Tracker', description: 'A React-based tool to manage income and expenses with real-time balance updates and chart-based reporting.', imageUrl: 'https://github.com/user-attachments/assets/1d179547-dcdd-460f-b9ca-244b392ca2f6', liveUrl: 'https://projectexpenses.netlify.app/index.html', repoUrl: 'https://github.com/pankajj48/Expenses_tracker.git' },
   { title: 'Quiz Website', description: 'A fully responsive and interactive  Quiz Application that allows users to answer multiple-choice questions', imageUrl: 'https://github.com/user-attachments/assets/3dc990b3-0fc1-45b0-8b97-41b20ba4a6ca', liveUrl: 'https://pankajj48.github.io/QUIZ-APPLICATION', repoUrl: 'https://github.com/pankajj48/QUIZ-APPLICATION.git' },
 ];
-const skills = {
-    frontend: ['HTML5', 'CSS3', 'JavaScript', 'React', 'TypeScript', 'NextJS'],
-    backend: ['NodeJS'],
-    tools: ['Git', 'Figma']
-};
 
+// --- NEW: Modified skills data with icons ---
+const skills = {
+    frontend: [
+        { name: 'HTML5', icon: <FaHtml5 size={40} /> },
+        { name: 'CSS3', icon: <FaCss3Alt size={40} /> },
+        { name: 'JavaScript', icon: <SiJavascript size={40} /> },
+        { name: 'React', icon: <FaReact size={40} /> },
+        { name: 'Next.js', icon: <SiNextdotjs size={40} /> },
+    ],
+    backend: [
+        { name: 'Node.js', icon: <FaNodeJs size={40} /> },
+        { name: 'Express', icon: <SiExpress size={40} /> },
+    ],
+    language: [
+        { name: 'C++', icon: <CgCPlusPlus size={40} /> },
+        { name: 'Python', icon: <FaPython size={40} /> },
+    ],
+    tools: [
+        { name: 'Git', icon: <FaGitAlt size={40} /> },
+        { name: 'Figma', icon: <SiFigma size={40} /> },
+    ]
+};
 
 // --- HELPER COMPONENTS ---
 const CustomCursor = () => {
@@ -149,14 +169,13 @@ const CustomCursor = () => {
   return <div ref={cursorRef} className="custom-cursor" />;
 };
 
-// NEW: SkillTag component replaces SkillIcon
-const SkillTag = ({ name }) => {
-    return (
-        <div className="skill-tag">
-            {name}
-        </div>
-    );
-};
+// --- NEW: SkillIcon component for the new design ---
+const SkillIcon = ({ icon, name }) => (
+    <div className="skill-icon-container">
+        {icon}
+        <span className="skill-tooltip">{name}</span>
+    </div>
+);
 
 const TimelineItem = ({ data }) => {
     const [ref, style] = useFadeIn({ threshold: 0.5 });
@@ -265,11 +284,10 @@ export default function App() {
   const [projectsRef, projectsStyle] = useFadeIn({threshold: 0.1});
   const [contactRef, contactStyle] = useFadeIn({threshold: 0.2});
   
-  // Add your desired configuration. You can generate one from the official tsParticles editor.
 const particlesOptions = {
     background: {
         color: {
-            value: 'var(--background)' // Uses your theme color!
+            value: 'var(--background)'
         }
     },
     fpsLimit: 60,
@@ -283,7 +301,7 @@ const particlesOptions = {
     },
     particles: {
         color: {
-            value: 'var(--primary)' // Uses your theme color!
+            value: 'var(--primary)'
         },
         links: {
             color: 'var(--text)',
@@ -323,7 +341,7 @@ const particlesOptions = {
     
     <div ref={appRef} className="app">
       {!isMobile && <CustomCursor />}
-      {init && <Tsparticles id="tsparticles" options={particlesOptions} />}
+      {init && <Tsparticles id="tsparticles" options={particlesOptions} aria-hidden="true" />}
       
       <header className="header">
         <div className={`header-container ${isScrolled ? 'scrolled' : ''}`}>
@@ -385,15 +403,15 @@ const particlesOptions = {
           </div>
           <div className="hero-button-container">
             <a href="#projects" onClick={(e) => handleNavClick(e, '#projects')} className="hero-button">View My Work</a>
-            <a href="/pankaj-namdev-resume.pdf" download="PankajNamdev_Resume.pdf" className="secondary-button">Download Resume</a>
+            <a href="/assets/PankajNamdev_FrontendDeveloper_Resume.pdf" download="PankajNamdev_Resume.pdf" className="secondary-button">Download Resume</a>
           </div>
           <div className="hero-socials">
              <a href="https://github.com/pankajj48" target="_blank" rel="noopener noreferrer" className="social-link">
                 <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/pankajj48" target="_blank" rel="noopener noreferrer" className="social-link">
+              </a>
+              <a href="https://www.linkedin.com/in/pankajj48" target="_blank" rel="noopener noreferrer" className="social-link">
                 <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
-            </a>
+              </a>
           </div>
         </section>
 
@@ -406,18 +424,14 @@ const particlesOptions = {
                 </div>
                 <div className="about-right">
                     <p className="about-text">I'm a passionate frontend developer with a knack for creating beautiful, functional, and user-centered digital experiences. I love turning complex problems into simple, elegant solutions that delight users and drive business goals.</p>
-                    {/* --- NEW SKILLS SECTION STRUCTURE --- */}
-                    <div className="skills-container">
-                      {Object.entries(skills).map(([category, skillList]) => (
-                        <div key={category} className="skill-category">
-                          <h3 className="skill-category-title">{category.charAt(0).toUpperCase() + category.slice(1)}</h3>
-                          <div className="skills-grid">
-                            {skillList.map(skill => (
-                              <SkillTag key={skill} name={skill} />
+                    {/* --- NEW SKILLS ICONS IMPLEMENTATION --- */}
+                    <div className="skills-icons-wrapper">
+                        <h3 className="skills-title">Technologies I Use</h3>
+                        <div className="skills-grid-icons">
+                            {[...skills.frontend, ...skills.backend, ...skills.language, ...skills.tools].map(skill => (
+                                <SkillIcon key={skill.name} icon={skill.icon} name={skill.name} />
                             ))}
-                          </div>
                         </div>
-                      ))}
                     </div>
                 </div>
             </div>
